@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="MonopolyApp.Client/App.axaml" value="MonopolyApp.Client/MonopolyApp.Client.csproj" />
+        <entry key="MonopolyApp.Client/Views/GameWindow.axaml" value="MonopolyApp.Client/MonopolyApp.Client.csproj" />
+        <entry key="MonopolyApp.Client/Views/MainWindow.axaml" value="MonopolyApp.Client/MonopolyApp.Client.csproj" />
+        <entry key="MonopolyApp.Server/App.axaml" value="MonopolyApp.Server/MonopolyApp.Server.csproj" />
+        <entry key="MonopolyApp.Server/MainWindow.axaml" value="MonopolyApp.Server/MonopolyApp.Server.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
