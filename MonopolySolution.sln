@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonopolySolution", "MonopolySolution\MonopolySolution.csproj", "{DD860D8E-8F4F-4335-B951-6A1BC0EEFEA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonopolyApp.Client", "MonopolyApp.Client\MonopolyApp.Client.csproj", "{0645D95A-7FC4-465A-8E40-7B8CFB5E6324}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonopolyApp.Server", "MonopolyApp.Server\MonopolyApp.Server.csproj", "{50425E38-9841-4F23-BAA9-3DED76B46712}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD860D8E-8F4F-4335-B951-6A1BC0EEFEA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD860D8E-8F4F-4335-B951-6A1BC0EEFEA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD860D8E-8F4F-4335-B951-6A1BC0EEFEA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD860D8E-8F4F-4335-B951-6A1BC0EEFEA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0645D95A-7FC4-465A-8E40-7B8CFB5E6324}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0645D95A-7FC4-465A-8E40-7B8CFB5E6324}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0645D95A-7FC4-465A-8E40-7B8CFB5E6324}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0645D95A-7FC4-465A-8E40-7B8CFB5E6324}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50425E38-9841-4F23-BAA9-3DED76B46712}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50425E38-9841-4F23-BAA9-3DED76B46712}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50425E38-9841-4F23-BAA9-3DED76B46712}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50425E38-9841-4F23-BAA9-3DED76B46712}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
