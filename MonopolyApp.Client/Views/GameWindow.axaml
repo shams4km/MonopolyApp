@@ -2,14 +2,37 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:MonopolyApp.Client.ViewModels"
         x:Class="MonopolyApp.Client.Views.GameWindow"
-        Title="Игра" Width="600" Height="400"
-        x:DataType="vm:GameViewModel">
-    <Design.DataContext>
-        <vm:GameViewModel />
-    </Design.DataContext>
+        x:DataType="vm:GameViewModel"
+        Title="Игра"
+        Width="900" Height="900">
+    
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
 
-    <StackPanel Margin="20">
-        <TextBlock Text="{Binding Status}" FontSize="16" TextWrapping="Wrap" />
-        <Button Content="Бросить кубик" Command="{Binding RollDiceCommand}" HorizontalAlignment="Center" Margin="0,20,0,0" />
-    </StackPanel>
+        <!-- Игровое поле -->
+        <Image Grid.Column="0" Source="avares://MonopolyApp.Client/Assets/mon.png"
+               Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center"
+               Width="800" Height="600"/>
+
+        <!-- Боковая панель с игроками -->
+        <StackPanel Grid.Column="1" Margin="10">
+            <TextBlock Text="Игроки в игре:" FontSize="16" FontWeight="Bold" Margin="0,10,0,5"/>
+            <ListBox ItemsSource="{Binding Players}" Height="200">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <TextBlock Text="Статус игры:" FontSize="16" FontWeight="Bold" Margin="0,10,0,5"/>
+            <TextBlock Text="{Binding Status}" FontSize="14" Foreground="Red"/>
+            
+            <!-- Кнопка броска кубиков -->
+            <Button Content="Бросить кубики" Command="{Binding RollDiceCommand}" Margin="10"/>
+        </StackPanel>
+    </Grid>
 </Window>

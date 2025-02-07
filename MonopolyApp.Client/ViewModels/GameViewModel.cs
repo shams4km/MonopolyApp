@@ -1,38 +1,36 @@
-using System.Net.Http;
-using System.Reactive;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
-using ReactiveUI;
+using System.Windows.Input;
+using CommunityToolkit.Mvvm.Input;
 
-namespace MonopolyApp.Client.ViewModels;
-
-public class GameViewModel : ReactiveObject
+namespace MonopolyApp.Client.ViewModels
 {
-    private readonly HttpClient _httpClient;
-
-    private string _status;
-    public string Status
+    public class GameViewModel : ViewModelBase
     {
-        get => _status;
-        set => this.RaiseAndSetIfChanged(ref _status, value);
-    }
+        public ObservableCollection<PlayerViewModel> Players { get; } = new ObservableCollection<PlayerViewModel>();
+        public string Status { get; set; } = "Игра в процессе...";
+        public ICommand RollDiceCommand { get; }
 
-    public ReactiveCommand<Unit, Unit> RollDiceCommand { get; }
-
-    public GameViewModel()
-    {
-        _httpClient = new HttpClient();
-        Status = "Нажмите 'Бросить кубик' для начала.";
-        RollDiceCommand = ReactiveCommand.CreateFromTask(RollDiceAsync);
-    }
-
-    private async Task RollDiceAsync()
-    {
-        var response = await _httpClient.GetAsync("http://localhost:5000/api/game/roll-dice");
-
-        if (response.IsSuccessStatusCode)
+        // Конструктор, принимающий имя игрока
+        public GameViewModel(string playerName)
         {
-            var result = await response.Content.ReadAsStringAsync();
-            Status = result;
+            // Логика добавления игрока
+            Players.Add(new PlayerViewModel(playerName, 1500));  // Добавление нового игрока
+            RollDiceCommand = new RelayCommand(RollDice);
+        }
+
+        private void RollDice()
+        {
+            // Логика для броска кубиков
+        }
+
+        // Метод для слушания обновлений
+        public async Task ListenForUpdates()
+        {
+            // Имитация обновлений
+            await Task.Delay(1000); // Замените на реальную логику для прослушивания обновлений от сервера
+            Status = "Ожидание других игроков...";
         }
     }
 }

@@ -3,22 +3,24 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using MonopolyApp.Client.Views;
 
-namespace MonopolyApp.Client;
-
-public partial class App : Application
+namespace MonopolyApp.Client
 {
-    public override void Initialize()
+    public class App : Application
     {
-        AvaloniaXamlLoader.Load(this);
-    }
-
-    public override void OnFrameworkInitializationCompleted()
-    {
-        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        public override void Initialize()
         {
-            desktop.MainWindow = new MainWindow(); // Главное окно
+            AvaloniaXamlLoader.Load(this);
         }
 
-        base.OnFrameworkInitializationCompleted();
+        public override void OnFrameworkInitializationCompleted()
+        {
+            if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+            {
+                // Создаем и показываем главное окно
+                desktop.MainWindow = new MainWindow();
+            }
+
+            base.OnFrameworkInitializationCompleted();
+        }
     }
 }

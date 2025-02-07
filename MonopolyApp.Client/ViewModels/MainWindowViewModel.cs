@@ -1,33 +1,37 @@
-﻿using System.Net.Http;
-using System.Net.Http.Json;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows.Input;
+using MonopolyApp.Client.Views;
 using CommunityToolkit.Mvvm.Input;
-using MonopolyApp.Client.ViewModels;
 
-namespace MonopolyApp.Client.ViewModels;
-
-public class MainWindowViewModel : ViewModelBase
+namespace MonopolyApp.Client.ViewModels
 {
-    private readonly HttpClient _httpClient;
-
-    public MainWindowViewModel()
+    public class MainWindowViewModel : ViewModelBase
     {
-        _httpClient = new HttpClient();
-        StartGameCommand = new RelayCommand(AddPlayerAsync);
-    }
-
-    public ICommand StartGameCommand { get; }
-
-    private async void AddPlayerAsync()
-    {
-        var playerName = "Player1"; // Замените на имя игрока
-        var response = await _httpClient.PostAsJsonAsync("http://localhost:5000/api/game/add-player", playerName);
-
-        if (response.IsSuccessStatusCode)
+        private string _playerName;
+        public string PlayerName
         {
-            var result = await response.Content.ReadAsStringAsync();
-            System.Diagnostics.Debug.WriteLine(result); // Вывод результата в консоль
+            get => _playerName;
+            set => SetProperty(ref _playerName, value);
+        }
+
+        public ICommand StartGameCommand { get; }
+
+        public MainWindowViewModel()
+        {
+            StartGameCommand = new AsyncRelayCommand(StartGameAsync);
+        }
+
+        private async Task StartGameAsync()
+        {
+            if (string.IsNullOrWhiteSpace(PlayerName))
+            {
+                return;
+            }
+
+            // Логика для создания нового окна игры
+            var gameWindow = new GameWindow(PlayerName);
+            await gameWindow.LoadGameAsync();
+            gameWindow.Show();
         }
     }
 }
